@@ -1,0 +1,91 @@
+.details-container {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.personal-container {
+    position: absolute;
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+}
+
+.details-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+label {
+    margin: 0;
+}
+
+.personal-container h2{
+    text-align: center;
+}
+
+.addresses-container {
+    position: absolute;
+    box-sizing: border-box;
+    width: 50%;
+    top: 0;
+    right: 0;
+    height: 400px;
+}
+
+.addresses-form {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.address-form h4 {
+    text-align: center;
+    padding-right: 0px;
+    margin-bottom: 30px;
+}
+
+.name-container {
+    margin: 20px 10px 25px;
+    font-size: 25px;
+}
+
+.email-container {
+    margin: 5px 10px; 
+    font-size: 20px;
+}
+
+.personal-container input{
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: 1s;
+}
+
+
+.personal-container input:focus {
+    color: rgb(250, 80, 80);
+    outline: none;
+    border-bottom: 1px solid rgb(250, 80, 80);
+}
+
+h2 span.badge {
+    transition: visibility .5s;
+}
+
+.address-form {
+    height: 300px;
+}
+
+.add-address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.address-form > .data-form{
+    padding: 0px 30px 5px 0px;
+}

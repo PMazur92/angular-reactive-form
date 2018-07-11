@@ -1,0 +1,104 @@
+<div class="details-container clearfix">
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="personal-container">
+      <h2>User Details
+        <i [style.visibility]="!userForm.pristine? 'visible': 'hidden'" class="fas fa-pencil-alt"></i>
+      </h2>
+      <div class="details-buttons">
+        <button type="submit" class="btn btn-success" [disabled]="userForm.pristine">Save</button>&nbsp;
+        <button type="button" class="btn btn-primary" (click)="revert()" [disabled]="userForm.pristine">Revert</button>
+      </div>
+      <div class="name-container">
+        <label for="name">Name:</label>
+        <div>
+          <input id="name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="email-container">
+        <label for="email">Email:</label>
+        <div>
+          <input id="email" formControlName="email">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="addresses-container" formArrayName="addresses">
+      <div *ngIf="countAddresses" class="addresses-form">
+
+        <div *ngFor="let address of addresses.controls; index as i" [formGroupName]="i">
+
+          <div *ngIf="selectedAddress === i" class="address-form">
+            <h4>
+              Address #{{i + 1}}
+              <button type="button" class="close" aria-label="Close" (click)="remove(i)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </h4>
+
+            <div class="data-form">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="street">Street:</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="street" formControlName="street">
+              </div>
+            </div>
+
+            <div class="data-form">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="city">City:</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="city" formControlName="city">
+              </div>
+            </div>
+
+            <div class="data-form">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="zip-code">Zip Code:</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="zip-code" formControlName="zip_code">
+              </div>
+            </div>
+
+            <div class="data-form">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="voivodeship">Voivodeship</label>
+                </div>
+                <select class="custom-select" id="voivodeship" formControlName="voivodeship">
+                  <option *ngFor="let voivodeship of voivodeships" [value]="voivodeship">{{ voivodeship }}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" *ngIf="countAddresses>=3">
+            <a class="page-link" (click)="selectAddress(selectedAddress-1)">Previous</a>
+          </li>
+          <li *ngFor="let address of addresses.controls; index as i" class="page-item {{ i === selectedAddress?'active':''}}" >
+            <a class="page-link" (click)="selectAddress(i)">{{ i+1 }}</a>
+          </li>
+          <li class="page-item" *ngIf="countAddresses>=3">
+            <a class="page-link" (click)="selectAddress(selectedAddress+1)">Next {{i}}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="add-address">
+        <button class="btn-address btn btn-primary" (click)="addAddress()" type="button">Add new address</button>
+      </div>
+    </div>
+  </form>
+</div>
