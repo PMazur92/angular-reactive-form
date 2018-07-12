@@ -90,12 +90,14 @@ export class UserDetailComponent implements OnInit, OnChanges {
     if (this.countAddresses < 4) {
       this.addresses.push(this.fb.group(new Address()));
       this.selectedAddress = this.countAddresses - 1;
+      this.userForm.markAsDirty();
     }
   }
 
   remove(index: number) {
     this.addresses.removeAt(index);
     this.selectedAddress = (this.selectedAddress - 1) > 0 ? this.selectedAddress - 1 : 0;
+    this.userForm.markAsDirty();
   }
 
   // sliceMin(selectedNum): number {
