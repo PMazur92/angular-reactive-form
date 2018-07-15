@@ -87,15 +87,15 @@
           <li class="page-item" *ngIf="countAddresses>=3">
             <a class="page-link" (click)="selectAddress(selectedAddress-1)">Previous</a>
           </li>
-          <li *ngFor="let address of addresses.controls; index as i" class="page-item {{ i === selectedAddress?'active':''}}" >
+          <li *ngFor="let address of addresses.controls; index as i" class="page-item" [ngClass]="{'active': i === selectedAddress}" >
             <a class="page-link" (click)="selectAddress(i)">{{ i+1 }}</a>
           </li>
           <li class="page-item" *ngIf="countAddresses>=3">
-            <a class="page-link" (click)="selectAddress(selectedAddress+1)">Next {{i}}</a>
+            <a class="page-link" (click)="selectAddress(selectedAddress+1)">Next</a>
           </li>
         </ul>
       </nav>
-
+      <div></div>
       <div class="add-address">
         <button class="btn-address btn btn-primary" (click)="addAddress()" type="button">Add new address</button>
       </div>

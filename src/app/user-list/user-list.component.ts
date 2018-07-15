@@ -39,9 +39,4 @@ export class UserListComponent implements OnInit {
   collapse(id: number): string {
     return 'collapse' + id;
   }
-
-  collapseID(id: number):string {
-    return '#'+this.collapse(id);
-  }
-
 }

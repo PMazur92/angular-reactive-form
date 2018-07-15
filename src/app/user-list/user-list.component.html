@@ -1,25 +1,8 @@
-<!-- <div>
-  <button (click)="getUsers()" class="btn btn-primary">Refresh</button>
-  <div>
-    <button data-toggle="collapse" href="#user-detail-collapse" role="button" aria-expanded="false" aria-controls="user-detail-collapse"
-      *ngFor="let user of users | async" (click)="select(user);">
-      {{ user.name }}
-    </button>
-  </div>
-</div>
-
-<div class="collapse" id="user-detail-collapse">
-  <div class="card card-body" *ngIf="selectedUser">
-    <app-user-detail [user]="selectedUser"></app-user-detail>
-  </div>
-</div> -->
-
 <div class="accordion" id="accordionList">
-    <!-- 1 -->
     <div *ngFor="let user of users | async; index as i; first as isFirst" class="card">
-      <div class="card-header" [attr.id]="header(i)">
+      <div class="card-header" [attr.id]="user.name">
         <h5 class="mb-0">
-          <button (click)="select(user)" class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="collapseID(i)" aria-expanded="false" [attr.aria-controls]="collapse(i)">
+          <button (click)="select(user)" class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#' + collapse(i)" aria-expanded="false" [attr.aria-controls]="collapse(i)">
             {{ user.name }} / {{ user.email }}
           </button>
         </h5>
